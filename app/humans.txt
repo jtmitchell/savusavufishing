@@ -3,11 +3,11 @@
 
 # TEAM
 
-  <name> -- <role> -- <twitter>
+  James Mitchell -- Developer -- @saywibble
 
 # THANKS
 
-  <name>
+  * the Web Starter Kit team
 
 # TECHNOLOGY COLOPHON
 
