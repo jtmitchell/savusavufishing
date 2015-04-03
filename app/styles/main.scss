@@ -28,6 +28,7 @@ body {
   background-color: #fff;
   box-sizing: border-box;
   min-height: 100%;
+  background:#483521 url('/images/wallpaper.png');
 }
 
 body.open {
@@ -46,6 +47,11 @@ body.open {
 }
 
 .app-bar-container {
+  background-image: url('/images/savusavu-seafront.jpg');
+  background-repeat: no-repeat;
+  background-position: left;
+  color: white;
+  text-shadow: 2px 2px 2px black;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -139,6 +145,20 @@ body.open {
   backface-visibility: hidden;
 }
 
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Lobster', cursive;
+	text-shadow: 2px 2px 2px lightgray;
+	font-size: 1.75em;
+}
+
+.copyright {
+	font-family: serif;
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
 .base,
 p,
 ul,
@@ -228,6 +248,7 @@ main {
   /* Height of the header */
   padding: 60px 16px 16px 16px;
   min-height: 100%;
+  background: #FFF3DB ;
 }
 
 /** Larger Screens - desktops and tablets **/
