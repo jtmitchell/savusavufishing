@@ -1,5 +1,6 @@
 'use strict';
 
+/* jshint ignore:start */
 function rp(json) {
 	document.write('<ul>');
 	
@@ -67,3 +68,4 @@ function rp(json) {
 	}
 	document.write('</ul>');
 }
+/* jshint ignore:end */
