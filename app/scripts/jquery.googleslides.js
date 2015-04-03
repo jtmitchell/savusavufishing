@@ -1,7 +1,7 @@
 ﻿// googleslides v1.1 - jQuery Google Slides plugin
 // (c) 2012 Brady Holt - www.geekytidbits.com
 // License: http://www.opensource.org/licenses/mit-license.php
-
+/* jshint ignore:start */
 (function( $ ){
 	var defaults = {
 			  'userid'			 : '115528839112598673902',
@@ -129,3 +129,4 @@
 		}    		
   };
 })( jQuery );
+/* jshint ignore:end */

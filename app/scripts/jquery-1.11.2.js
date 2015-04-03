@@ -12,6 +12,7 @@
  * Date: 2014-12-17T15:27Z
  */
 
+/* jshint ignore:start */
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -7134,7 +7135,6 @@ function createTween( value, prop, animation ) {
 }
 
 function defaultPrefilter( elem, props, opts ) {
-	/* jshint validthis: true */
 	var prop, value, toggle, tween, hooks, oldfire, display, checkDisplay,
 		anim = this,
 		orig = {},
@@ -10344,3 +10344,4 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
+/* jshint ignore:end */
