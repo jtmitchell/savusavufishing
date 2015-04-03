@@ -35,6 +35,8 @@
 
     <!-- Page styles -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/jquery.googleslides.css" type="text/css">
+    
   </head>
   <body>
     <header class="app-bar promote-layer">
@@ -137,7 +139,7 @@
 		<p>Savusavu is on the island of Vanua Levu in Fiji. 
 		The town is a short flight from Nadi or Suva, and boasts several wonderful resorts.</p>
 		<div class="g--half g--centered g--last">
-			<iframe  width="400" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.nz/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=&amp;sll=-16.792709,179.316788&amp;sspn=0.295814,0.569916&amp;ie=UTF8&amp;t=h&amp;ll=-16.792709,179.316788&amp;spn=0.230077,0.291824&amp;z=11&amp;output=embed"></iframe>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d285520.8993826802!2d179.316788!3d-16.792709!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1428056280630" width="400" frameborder="0" style="border:0"></iframe>
 		</div>
 		
 		<p>Transtar Charters offer fishing in an area (roughly) from south of Savusavu to the island of Koro.</p>
@@ -161,12 +163,9 @@
 		<img src="https://lh4.googleusercontent.com/-CTYgZX34PzI/THr2yGsZ0iI/AAAAAAAACno/mydQb96i_bc/s288/Andrew%2527s%2520Mahimahi%2520006.jpg">
 		</p>
 
-		<p>&nbsp;</p>
+		<p>For more pictures, visit the <a href="https://plus.google.com/photos/117810291699984649489/albums/5125936906269495313?sort=4">Savusavu Fishing photos page.</a></p>
 		
-		<div align="center">
-			<embed type="application/x-shockwave-flash" src="http://picasaweb.google.com/s/c/bin/slideshow.swf" width="600" height="500" flashvars="host=picasaweb.google.com&captions=1&RGB=0x000000&feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fsavusavufishing%2Falbumid%2F5125936906269495313%3Fkind%3Dphoto%26alt%3Drss" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
-			<p>These pictures, and more, can be found on the <a href="http://picasaweb.google.com/savusavufishing/FishingCharters">Savusavufishing Picasaweb site</a></p>
-		</div>
+		<div id="slideshow" class="g--half g--centered g--last"></div>
 		</section>
 
 		<section>
@@ -180,8 +179,19 @@
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/jquery-1.11.2.js"></script>
+    <script src="scripts/jquery.googleslides.js"></script>
     <!-- endbuild -->
-
+    <script type="text/javascript">
+    $(document).ready(function () {
+    	$("#slideshow").googleslides({
+	    	userid: '117810291699984649489',
+	    	albumid: '5125936906269495313',
+	    	caption: false,
+	    	maxresults: 20
+    	});
+	});
+    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
