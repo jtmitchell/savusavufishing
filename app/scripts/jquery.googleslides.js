@@ -89,10 +89,10 @@
 			}
 			
 			//set height/width of container so that it is just big enough to contain all the images
-			this.height(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).height(); }).get()) + 2);
+			//this.height(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).height(); }).get()) + 2);
 			
-			this.width(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).width(); }).get()) + 2);
-			
+			//this.width(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).width(); }).get()) + 2);
+			this.width('90%');
 			this.googleslides('start');
 		},
 		randomSort: function (a, b) {
