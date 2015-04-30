@@ -2,14 +2,13 @@ branches:
   only:
   - master
 language: node_js
-node_js:
-  'stable'
+node_js: stable
 install:
-  - npm install -g npm
-  - npm install -g gulp
-  - npm install
+- npm install -g npm
+- npm install -g gulp
+- npm install
 script:
-  - gulp
+- gulp
 deploy:
   provider: s3
   skip_cleanup: true
@@ -21,6 +20,6 @@ deploy:
   detect_encoding: true
   cache_control: max-age=604800
   access_key_id:
-    secure: IK5cC4HSeRjyC9hC21xVskq9G7NmpxADZMG3x7MW7/1aP7NcWGi8KpYM9t5kkTRpdPHaCZK/MKvG8ykDuvm3rS+VyE86g7otm7TaMoqbKlT4auGZws3zGPSOQHpBC2IrJxJWcIiM82WUg/VS3AiNMkDK8gTNMbP4pz5riIOyFhU=
+    secure: eJXuRfJKSYt00504fTcUjTI8kzhlLk1dRFOHY/DvBskUnSrP5blSuJRqNlUXr+L9+OMV/Jf7M/Gj+RqfwgvuXjYytEwDA77peY+sUvZ3vxjgGBNu4rkmZDnvNOPuDrVZFfvWjlElYjwUhjI7382gGoC5WXC3E61C4ftWa9muNKQ=
   secret_access_key:
-    secure: IdM7CRt/ehvc4oBvhTVWPlsXKSkk1LBqxhs8QXux9z5LLLthcoIIFT6KrUxXB5OAALLeBIThpgQ1MB7IVo6U2Gk9yQE2WvrfKHRPzDXxjmwabEXGkU+71CPf4/JxIwTOMBCXDIF3aZTi8jOQGRnf2lJqPJO8Rj1hwBLF7SZMMs8=
+    secure: EHCfGZvewUlmmSmZrHYv2VLsrKeN/gs5oeM7IoSM3/X0JKrBZr6dhI20bIFsryaTLLMroIBK4h06F2kWIOb4p1gbz1lPKNHGrVWe9UNR6sU/FwwQAn/jTVCDe1VPRrbheqLBkXbK4BR89GicasacQSbjgFDET9SIyTEXfXge9F8=
