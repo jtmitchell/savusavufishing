@@ -23,3 +23,6 @@ deploy:
     secure: eJXuRfJKSYt00504fTcUjTI8kzhlLk1dRFOHY/DvBskUnSrP5blSuJRqNlUXr+L9+OMV/Jf7M/Gj+RqfwgvuXjYytEwDA77peY+sUvZ3vxjgGBNu4rkmZDnvNOPuDrVZFfvWjlElYjwUhjI7382gGoC5WXC3E61C4ftWa9muNKQ=
   secret_access_key:
     secure: EHCfGZvewUlmmSmZrHYv2VLsrKeN/gs5oeM7IoSM3/X0JKrBZr6dhI20bIFsryaTLLMroIBK4h06F2kWIOb4p1gbz1lPKNHGrVWe9UNR6sU/FwwQAn/jTVCDe1VPRrbheqLBkXbK4BR89GicasacQSbjgFDET9SIyTEXfXge9F8=
+notifications:
+  slack:
+    secure: XgouSzt46LtY47YR/bdHMb7lGbtus3KEHjt/n4gTo/zKRlt+khjSsfJI6ToWIbpjHLoxHjNbrDc8dRHqOIckQzg/M/aELKJ0+SCXxQLOZh+N7+y8ogBMOiUeonMjDfluWU9++gp1qO+T1Sfe7ld5UKuQ7I+YUyeXaXwe3OO6ptM=
