@@ -28,6 +28,9 @@ var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -65,6 +68,7 @@ gulp.task('copy', function () {
   return gulp.src([
     'app/*',
     '!app/*.html',
+    '!app/scripts/**/*.js',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
@@ -156,7 +160,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/scripts/**/*.js'], ['browserify', 'jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -173,9 +177,19 @@ gulp.task('serve:dist', ['default'], function () {
   });
 });
 
+gulp.task('browserify', function() {
+    // Grabs the app.js file
+    return browserify('./app/scripts/entry.js')
+        // bundles it and creates a file called main.js
+        .bundle()
+        .pipe(source('main.js'))
+        // saves it the public/js/ directory
+        .pipe(gulp.dest('./dist/scripts/'));
+});
+
 // Build production files, the default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'browserify', 'copy'], cb);
 });
 
 // Run PageSpeed Insights

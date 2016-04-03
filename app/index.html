@@ -9,18 +9,18 @@
     <title>Savusavu Fishing with Transtar Charters</title>
 
     <!-- Add to homescreen -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Fallback to homescreen for Chrome <39 on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Transtar Charters">
-    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Transtar Charters">
-    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
@@ -30,18 +30,18 @@
     <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'>
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
-    <link rel="canonical" href="http://www.example.com/">
+    <link rel="canonical" href="/http://www.example.com/">
     -->
 
     <!-- Page styles -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/jquery.googleslides.css" type="text/css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/jquery.googleslides.css" type="text/css">
 
   </head>
   <body>
     <header class="app-bar promote-layer">
       <div class="app-bar-container">
-        <button class="menu"><img src="images/hamburger.svg" alt="Menu"></button>
+        <button class="menu"><img src="/images/hamburger.svg" alt="Menu"></button>
         <h1 class="logo">Savusavu Fishing</h1>
         <section class="app-bar-actions">
         <!-- Put App Bar Buttons Here -->
@@ -99,7 +99,7 @@
 		<p>The latest news from the <a href="https://savusavufishing.blogspot.com/" target="_blank">Savusavu Fishing blog</a></p>
 		<div class="g-wide--3 g-medium--2">
 			<!-- build:js scripts/feedwidget.min.js -->
-		    <script src="scripts/feedwidget.js"></script>
+		    <script src="/scripts/feedwidget.js"></script>
 	    	<!-- endbuild -->
 			<script>
 			var numposts = 7;
@@ -113,7 +113,7 @@
 		</div>
 
 		<div class="">
-			<img src="images/terry.jpg" width="137"/>
+			<img src="/images/terry.jpg" width="137"/>
 		</div>
 		</section>
 
@@ -144,7 +144,7 @@
 
 		<p>Transtar Charters offer fishing in an area (roughly) from south of Savusavu to the island of Koro.</p>
 		<div class="g--half g--centered g--last">
-			<img src="images/fiji-map.png" alt="Map of Fiji" width="100%" >
+			<img src="/images/fiji-map.png" alt="Map of Fiji" width="100%" >
 		</div>
 		</section>
 
@@ -189,13 +189,11 @@
     </main>
 
     <!-- build:js scripts/main.min.js -->
-    <script src="scripts/main.js"></script>
-    <script src="scripts/jquery-1.11.2.js"></script>
-    <script src="scripts/jquery.googleslides.js"></script>
     <!-- endbuild -->
+    <script src="/scripts/main.js"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
-    	$("#slideshow").googleslides({
+    jQuery(document).ready(function () {
+    	jQuery("#slideshow").googleslides({
 	    	userid: '117810291699984649489',
 	    	albumid: '5125936906269495313',
 	    	caption: false

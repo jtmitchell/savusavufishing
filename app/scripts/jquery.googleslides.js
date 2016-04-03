@@ -2,7 +2,7 @@
 // (c) 2012 Brady Holt - www.geekytidbits.com
 // License: http://www.opensource.org/licenses/mit-license.php
 /* jshint ignore:start */
-(function( $ ){
+(function( jQuery ){
 	var defaults = {
 			  'userid'			 : '115528839112598673902',
 			  'albumid'			 : '5710317752556741025',
@@ -15,13 +15,13 @@
 			  'time'	 		 : 5000,
 			  'fadespeed'		 : 1000
 	};
-			
+
 	var methods = {
 		init: function (options) {
-		    var settings = $.extend({}, defaults, options);
+		    var settings = jQuery.extend({}, defaults, options);
 			this.data('googleslidesOptions', settings);
-			
-			if ($('.googleslides[albumid=' + settings.albumid +']').length > 0) {
+
+			if (jQuery('.googleslides[albumid=' + settings.albumid +']').length > 0) {
 				var error = 'jQuery.googleslides ERROR: albumid:' + settings.albumid + ' is already on the page.  Only one album per page is supported.';
 				this.text(error);
 				console.log(error);
@@ -34,19 +34,19 @@
                   authKeyStr = '&authkey=' + settings.authkey;
                 }
 
-				var albumJsonUrl = '<script src="https://picasaweb.google.com/data/feed/base/user/' + settings.userid + '/albumid/' + settings.albumid 
-					+ '?alt=json&kind=photo&max-results=' + settings.maxresults + '&hl=en_US&imgmax=' + settings.imgmax  
+				var albumJsonUrl = '<script src="https://picasaweb.google.com/data/feed/base/user/' + settings.userid + '/albumid/' + settings.albumid
+					+ '?alt=json&kind=photo&max-results=' + settings.maxresults + '&hl=en_US&imgmax=' + settings.imgmax
 					+ authKeyStr
-					+ '&callback=jQuery.fn.googleslides.prepare_' + settings.albumid + '&fields=link,entry(link,media:group(media:content,media:description))">' 
+					+ '&callback=jQuery.fn.googleslides.prepare_' + settings.albumid + '&fields=link,entry(link,media:group(media:content,media:description))">'
 					+ '</sc' + 'ript>';
-				
-				var prepareFunCallback = 'jQuery.fn.googleslides.prepare_' + settings.albumid 
-					+ ' = function(data) { $(".googleslides[albumid=' + settings.albumid + ']").googleslides("prepare", data); };';
+
+				var prepareFunCallback = 'jQuery.fn.googleslides.prepare_' + settings.albumid
+					+ ' = function(data) { jQuery(".googleslides[albumid=' + settings.albumid + ']").googleslides("prepare", data); };';
 				eval(prepareFunCallback);
-				
+
 				this.width(settings.imgmax);
 				this.addClass('googleslides');
-				$('body').append(albumJsonUrl);
+				jQuery('body').append(albumJsonUrl);
 			}
 		},
 		prepare: function (data) {
@@ -61,37 +61,37 @@
 				width = item.media$group.media$content[0].width;
 				link = item.link[1].href;
 				caption = item.media$group.media$description.$t;
-				slide = $('<div class="googleslide"></div>');
+				slide = jQuery('<div class="googleslide"></div>');
 				var slideInner = slide;
 				if (settings.albumlink == true) {
-					slide.append($('<a target="_blank" href="' + link + '"></a>'));
+					slide.append(jQuery('<a target="_blank" href="' + link + '"></a>'));
 					slideInner = slide.children().first();
 				}
-				
-				slideInner.append($('<img src="' + url + '" alt="' + caption + '"/>'));
 
-				$("img", slideInner).width(width).height(height);
-				
+				slideInner.append(jQuery('<img src="' + url + '" alt="' + caption + '"/>'));
+
+				jQuery("img", slideInner).width(width).height(height);
+
 				if (settings.caption == true && caption != '') {
 					slideInner.append('<div class="captionWrapper"><div class="caption">' + caption + '</div></div>');
-					$(".captionWrapper", slideInner).width(settings.imgmax);
+					jQuery(".captionWrapper", slideInner).width(settings.imgmax);
 				}
-				
+
 				slides.push(slide);
 			}
-			
+
 			if (settings.random == true) {
 				slides.sort(methods.randomSort);
 			}
-			
+
 			for (var i = 0; i < slides.length; i++) {
 				this.append(slides[i]);
 			}
-			
+
 			//set height/width of container so that it is just big enough to contain all the images
-			//this.height(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).height(); }).get()) + 2);
-			
-			//this.width(Math.max.apply(Math, $('.googleslide img', this).map(function(){ return $(this).width(); }).get()) + 2);
+			//this.height(Math.max.apply(Math, jQuery('.googleslide img', this).map(function(){ return jQuery(this).height(); }).get()) + 2);
+
+			//this.width(Math.max.apply(Math, jQuery('.googleslide img', this).map(function(){ return jQuery(this).width(); }).get()) + 2);
 			this.width('90%');
 			this.googleslides('start');
 		},
@@ -100,9 +100,9 @@
 		},
 		start: function () {
 			var settings = this.data('googleslidesOptions');
-			
-			this.find('.googleslide').first().fadeIn(settings.fadespeed);	
-			
+
+			this.find('.googleslide').first().fadeIn(settings.fadespeed);
+
 			var target = this;
 			setInterval(function() {
 				var first = target.find('.googleslide').first();
@@ -118,15 +118,15 @@
 		}
 	}
 
-  $.fn.googleslides = function(method) {  
+  jQuery.fn.googleslides = function(method) {
 		 // Method calling logic
 		if ( methods[method] ) {
 		  return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		} else if ( typeof method === 'object' || ! method ) {
 		  return methods.init.apply( this, arguments );
 		} else {
-		  $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
-		}    		
+		  jQuery.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+		}
   };
 })( jQuery );
 /* jshint ignore:end */
