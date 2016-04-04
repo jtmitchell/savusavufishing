@@ -30,6 +30,7 @@ var reload = browserSync.reload;
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var ngAnnotate = require('gulp-ng-annotate');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -146,7 +147,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['styles', 'browserify'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -182,6 +183,7 @@ gulp.task('browserify', function() {
     return browserify('app/scripts/entry.js')
         .bundle()
         .pipe(source('bundle.js'))
+        .pipe(ngAnnotate())
         .pipe(gulp.dest('app/scripts/'));
 });
 
