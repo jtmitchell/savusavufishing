@@ -7,3 +7,4 @@ dist
 .venv
 .env
 
+app/scripts/bundle.js
