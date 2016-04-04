@@ -8,3 +8,4 @@ dist
 .env
 
 app/scripts/bundle.js
+npm-debug.log

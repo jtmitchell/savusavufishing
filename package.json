@@ -40,7 +40,9 @@
     "browserify": "browserify"
   },
   "dependencies": {
-    "jquery": "1.12.2"
+    "angular": "1.5.3",
+    "jquery": "1.12.2",
+    "ngmap": "1.17.1"
   },
   "browser": {
     "jquery.googleslides": "./app/scripts/vendor/jquery.googleslides.js",
