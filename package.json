@@ -43,8 +43,8 @@
     "jquery": "1.12.2"
   },
   "browser": {
-    "jquery.googleslides": "./app/scripts/jquery.googleslides.js",
-    "feedwidget": "./app/scripts/feedwidget.js",
-    "wsk.main": "./app/scripts/main.js"
+    "jquery.googleslides": "./app/scripts/vendor/jquery.googleslides.js",
+    "feedwidget": "./app/scripts/vendor/feedwidget.js",
+    "wsk.main": "./app/scripts/vendor/wsk.main.js"
   }
 }
