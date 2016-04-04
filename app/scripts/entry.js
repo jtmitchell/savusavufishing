@@ -6,6 +6,6 @@ require('wsk.main');
 var angular = require('angular');
 
 var ngmap = require('ngmap');
-var rssfeed = require('./rssfeed/');
+var rssfeed = require('./rssfeed');
 
-angular.module('SavusavuFishingApp', [ngmap, rssfeed.name]);
+angular.module('SavusavuFishingApp', [ngmap, rssfeed]);
