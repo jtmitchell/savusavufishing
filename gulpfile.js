@@ -161,7 +161,7 @@ gulp.task('serve', ['styles', 'browserify'], function () {
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js', '!app/scripts/bundle.js'], ['jshint', 'browserify']);
+  gulp.watch(['app/scripts/**/*.js', '!app/scripts/bundle.js'], ['jshint', 'browserify', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -180,7 +180,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 gulp.task('browserify', function() {
     // Grabs the app.js file
-    return browserify('app/scripts/entry.js')
+    return browserify('app/scripts/app.js')
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(ngAnnotate())

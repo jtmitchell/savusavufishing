@@ -9,3 +9,4 @@ dist
 
 app/scripts/bundle.js
 npm-debug.log
+nbproject/
