@@ -20,7 +20,7 @@ deploy:
   acl: public_read
   local_dir: dist
   detect_encoding: true
-  cache_control: max-age=604800
+  cache_control: max-age=86400
   access_key_id:
     secure: eJXuRfJKSYt00504fTcUjTI8kzhlLk1dRFOHY/DvBskUnSrP5blSuJRqNlUXr+L9+OMV/Jf7M/Gj+RqfwgvuXjYytEwDA77peY+sUvZ3vxjgGBNu4rkmZDnvNOPuDrVZFfvWjlElYjwUhjI7382gGoC5WXC3E61C4ftWa9muNKQ=
   secret_access_key:
