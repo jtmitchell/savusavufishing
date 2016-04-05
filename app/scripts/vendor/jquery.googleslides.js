@@ -24,7 +24,7 @@
 			if (jQuery('.googleslides[albumid=' + settings.albumid +']').length > 0) {
 				var error = 'jQuery.googleslides ERROR: albumid:' + settings.albumid + ' is already on the page.  Only one album per page is supported.';
 				this.text(error);
-				console.log(error);
+				// console.log(error);
 			}
 			else {
 				this.attr('albumid', settings.albumid);
