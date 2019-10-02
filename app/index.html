@@ -129,7 +129,9 @@
 		<p>Savusavu is on the island of Vanua Levu in Fiji.
 		The town is a short flight from Nadi or Suva, and boasts several wonderful resorts.</p>
 
-    <div class="g--full g--centered g--last" map-lazy-load="https://maps.google.com/maps/api/js">
+    <div class="g--full g--centered g--last"
+      map-lazy-load="https://maps.google.com/maps/api/js"
+      map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map style="height:500px;"  center="[-16.778488, 179.333270]"
         zoom="3" zoom-to-include-markers="true" scrollwheel="false">
 
@@ -147,8 +149,8 @@
           editable="false" radius="25000">
         </shape>
 
-        <info-window id="fishingarea" visible-on-marker="fishingarea-marker" style="display:none;">
-          <div>
+        <info-window id="fishingarea">
+          <div ng-non-bindable>
             <h4>Fishing area</h4>
             <p>Transtar Charters offer fishing in an area from south of Savusavu to the island of Koro.</p>
           </div>
@@ -172,7 +174,7 @@
 		<img width="100%" src="https://lh4.googleusercontent.com/-CTYgZX34PzI/THr2yGsZ0iI/AAAAAAAACno/mydQb96i_bc/w617-h823-no/Andrew%27s%2BMahimahi%2B006.jpg">
 		</p>
 
-		<p class="small">For more pictures, visit the <a href="https://plus.google.com/photos/117810291699984649489/albums/5125936906269495313?sort=4">Savusavu Fishing photos page.</a></p>
+		<p class="small">For more pictures, visit the <a href="https://photos.app.goo.gl/xBNAscgwSRR2YKo28">Savusavu Fishing photos page.</a></p>
 
     <div class="g--half g--centered g--last">
       <p class="small">

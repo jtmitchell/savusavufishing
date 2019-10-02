@@ -143,11 +143,25 @@ gulp.task('html', function () {
     .pipe($.size({title: 'html'}));
 });
 
+gulp.task('browserify', function() {
+  // Grabs the app.js file
+  return browserify('app/scripts/app.js')
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(ngAnnotate())
+      .pipe(gulp.dest('app/scripts/'));
+});
+
 // Clean output directory
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
+// Build production files, the default task
+gulp.task('default', gulp.series('clean', function (cb) {
+runSequence('styles', ['jshint', 'browserify', 'html', 'images', 'fonts', 'copy'], cb);
+}));
+
 // Watch files for changes & reload
-gulp.task('serve', ['styles', 'browserify'], function () {
+gulp.task('serve', gulp.series('styles', 'browserify', function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -160,13 +174,13 @@ gulp.task('serve', ['styles', 'browserify'], function () {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js', '!app/scripts/bundle.js'], ['jshint', 'browserify', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], gulp.series('styles', reload));
+  gulp.watch(['app/scripts/**/*.js', '!app/scripts/bundle.js'], gulp.series('jshint', 'browserify', reload));
   gulp.watch(['app/images/**/*'], reload);
-});
+}));
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('serve:dist', gulp.series('default', function () {
   browserSync({
     notify: false,
     logPrefix: 'WSK',
@@ -176,21 +190,7 @@ gulp.task('serve:dist', ['default'], function () {
     // https: true,
     server: 'dist'
   });
-});
-
-gulp.task('browserify', function() {
-    // Grabs the app.js file
-    return browserify('app/scripts/app.js')
-        .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(ngAnnotate())
-        .pipe(gulp.dest('app/scripts/'));
-});
-
-// Build production files, the default task
-gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'browserify', 'html', 'images', 'fonts', 'copy'], cb);
-});
+}));
 
 // Run PageSpeed Insights
 gulp.task('pagespeed', function (cb) {
