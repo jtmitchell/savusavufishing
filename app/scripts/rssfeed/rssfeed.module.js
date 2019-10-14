@@ -36,10 +36,30 @@ app.controller('RssFeedController',['RssFeedService', function(RssFeedService){
   return ctrl;
 }]);
 
-app.factory('RssFeedService', ['$http', function($http){
+app.factory('RssFeedService', ['$http', '$sce', function($http, $sce){
   return {
     parseFeed : function(url){
-      return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=7&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+      var config = {
+        params: {
+          alt: 'json'
+        }
+      }
+      return $http.get(url, config).then(function(response){
+        var feed = [];
+        response.data.feed.entry.forEach(function(e){
+          var entry = {
+            title: e.title.$t,
+            publishedDate: e.published.$t,
+            media: {
+              url: e.media$thumbnail.url,
+              height: e.media$thumbnail.height,
+              width: e.media$thumbnail.width
+            }
+          };
+          feed.push(entry);
+        });
+        return feed;
+      });
     }
   };
 }]);
