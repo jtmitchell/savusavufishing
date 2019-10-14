@@ -23,7 +23,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
-var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
@@ -31,18 +30,6 @@ var reload = browserSync.reload;
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var ngAnnotate = require('gulp-ng-annotate');
-
-var AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
-];
 
 // Lint JavaScript
 gulp.task('jshint', function () {
@@ -98,7 +85,7 @@ gulp.task('styles', function () {
       precision: 10,
       onError: console.error.bind(console, 'Sass error:')
     }))
-    .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+    .pipe($.autoprefixer())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
@@ -109,10 +96,7 @@ gulp.task('styles', function () {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', function () {
-  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
-
   return gulp.src('app/**/*.html')
-    .pipe(assets)
     // Concatenate and minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
     // Remove any unused CSS
@@ -132,7 +116,6 @@ gulp.task('html', function () {
     // Concatenate and minify styles
     // In case you are still using useref build blocks
     .pipe($.if('*.css', $.csso()))
-    .pipe(assets.restore())
     .pipe($.useref())
     // Update production Style Guide paths
     .pipe($.replace('components/components.css', 'components/main.min.css'))
@@ -156,9 +139,7 @@ gulp.task('browserify', function() {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Build production files, the default task
-gulp.task('default', gulp.series('clean', function (cb) {
-runSequence('styles', ['jshint', 'browserify', 'html', 'images', 'fonts', 'copy'], cb);
-}));
+gulp.task('default', gulp.series('clean', 'styles', 'jshint', 'browserify', 'html', 'images', 'fonts', 'copy'));
 
 // Watch files for changes & reload
 gulp.task('serve', gulp.series('styles', 'browserify', function () {

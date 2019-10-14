@@ -43,7 +43,7 @@ app.factory('RssFeedService', ['$http', '$sce', function($http, $sce){
         params: {
           alt: 'json'
         }
-      }
+      };
       return $http.get(url, config).then(function(response){
         var feed = [];
         response.data.feed.entry.forEach(function(e){
